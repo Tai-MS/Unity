@@ -49,6 +49,13 @@ public class FPS_Controller : MonoBehaviour
 
     #endregion
 
+    [Header("Configuracion Disparo")]
+    #region Variables Disparo
+
+    public SistemaDeDisparo _sistemaDeDisparo;
+
+    #endregion
+
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked; //.none o .locked o .confined
     }
@@ -75,7 +82,7 @@ public class FPS_Controller : MonoBehaviour
         #endregion
     
 
-        #region Movimiento y Salgo del Personaje
+        #region Movimiento y Salto del Personaje
 
         float movHorizontal = Input.GetAxis("Horizontal");
         float movVertical = Input.GetAxis("Vertical");
@@ -108,6 +115,11 @@ public class FPS_Controller : MonoBehaviour
 
         _characterController.Move(_velocidad * Time.deltaTime);
 
+        #endregion
+
+        #region Disparo del personaje
+        if(Input.GetMouseButtonDown( 0 ) )
+            _sistemaDeDisparo.Disparar();
         #endregion
     }
 }
